@@ -15,13 +15,6 @@ const app = express();
 
 
 
-// 25h
-// 5a
-// 30h
-// 10a
-// 20h
-// 20a
-
 app.use(cors({
   origin: "http://localhost:5173" , 
   optionsSuccessStatus: 200 

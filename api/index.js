@@ -13,13 +13,26 @@ const PORT = 3001
 
 const app = express();
 
+
+
+// 25h
+// 5a
+// 30h
+// 10a
+// 20h
+// 20a
+
 app.use(cors({
   origin: "http://localhost:5173" , 
   optionsSuccessStatus: 200 
 }))
+console.log(process.env.MONGODB_SECRET);
+
 
 mongoose
-  .connect(process.env.MONGODB_SECRET)
+  .connect(
+     "mongodb+srv://ammaryousef172:ammaryousef172@cluster0.dmjbf78.mongodb.net/?retryWrites=true&w=majority"
+    )
   .then(() => {
     console.log('Connected to MongoDB!');
   })

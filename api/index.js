@@ -1,6 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-
 import cors from 'cors';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
@@ -8,9 +7,7 @@ import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import 'dotenv/config';
-import { connected } from 'process';
 const PORT = 3001
-
 
 const app = express();
 
@@ -20,7 +17,7 @@ app.use(cors({
   origin: "http://localhost:5173" , 
   optionsSuccessStatus: 200 
 }))
-console.log(process.env.MONGODB_SECRET);
+
 
 
 mongoose

@@ -129,7 +129,7 @@ export default function Home() {
           </div>
         )}
       </div>
-
+      <button onClick={() => console.log(import.meta.env.VITE_FIREBASE_API_KEY)}>ammar</button>
     </div>
   );
 }

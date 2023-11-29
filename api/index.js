@@ -1,13 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+
 import cors from 'cors';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
-dotenv.config();
+import 'dotenv/config';
+import { connected } from 'process';
 const PORT = 3001
 
 
@@ -23,9 +24,7 @@ console.log(process.env.MONGODB_SECRET);
 
 
 mongoose
-  .connect(
-     "mongodb+srv://ammaryousef172:ammaryousef172@cluster0.dmjbf78.mongodb.net/?retryWrites=true&w=majority"
-    )
+  .connect(process.env.MONGODB_SECRET)
   .then(() => {
     console.log('Connected to MongoDB!');
   })

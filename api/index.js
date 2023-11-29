@@ -21,9 +21,9 @@ app.use(cors({
 
 
 mongoose
-  .connect(process.env.MONGODB_SECRET)
+  .connect(process.env.MONGODB_SECRET , { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connected to MongoDB!');
+    console.log('Connected to MongoDB');
   })
   .catch((err) => {
     console.log(err);

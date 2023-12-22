@@ -7,6 +7,7 @@ import {
   uploadBytesResumable,
 } from 'firebase/storage';
 import { app } from '../firebase';
+
 import {
   updateUserStart,
   updateUserSuccess,
@@ -161,7 +162,7 @@ export default function Profile() {
     }
   };
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className='max-w-lg p-3 mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
@@ -175,9 +176,9 @@ export default function Profile() {
           onClick={() => fileRef.current.click()}
           src={formData.avatar || currentUser.avatar}
           alt='profile'
-          className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'
+          className='self-center object-cover w-24 h-24 mt-2 rounded-full cursor-pointer'
         />
-        <p className='text-sm self-center'>
+        <p className='self-center text-sm'>
           {fileUploadError ? (
             <span className='text-red-700'>
               Error Image upload (image must be less than 2 mb)
@@ -195,7 +196,7 @@ export default function Profile() {
           placeholder='username'
           defaultValue={currentUser.username}
           id='username'
-          className='border p-3 rounded-lg'
+          className='p-3 border rounded-lg'
           onChange={handleChange}
         />
         <input
@@ -203,7 +204,7 @@ export default function Profile() {
           placeholder='email'
           id='email'
           defaultValue={currentUser.email}
-          className='border p-3 rounded-lg'
+          className='p-3 border rounded-lg'
           onChange={handleChange}
         />
         <input
@@ -211,16 +212,16 @@ export default function Profile() {
           placeholder='password'
           onChange={handleChange}
           id='password'
-          className='border p-3 rounded-lg'
+          className='p-3 border rounded-lg'
         />
         <button
           disabled={loading}
-          className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
+          className='p-3 text-white uppercase rounded-lg bg-slate-700 hover:opacity-95 disabled:opacity-80'
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
         <Link
-          className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95'
+          className='p-3 text-center text-white uppercase bg-green-700 rounded-lg hover:opacity-95'
           to={'/create-listing'}
         >
           Create Listing
@@ -238,36 +239,36 @@ export default function Profile() {
         </span>
       </div>
 
-      <p className='text-red-700 mt-5'>{error ? error : ''}</p>
-      <p className='text-green-700 mt-5'>
+      <p className='mt-5 text-red-700'>{error ? error : ''}</p>
+      <p className='mt-5 text-green-700'>
         {updateSuccess ? 'User is updated successfully!' : ''}
       </p>
-      <button onClick={handleShowListings} className='text-green-700 w-full'>
+      <button onClick={handleShowListings} className='w-full text-green-700'>
         Show Listings
       </button>
-      <p className='text-red-700 mt-5'>
+      <p className='mt-5 text-red-700'>
         {showListingsError ? 'Error showing listings' : ''}
       </p>
 
       {userListings && userListings.length > 0 && (
         <div className='flex flex-col gap-4'>
-          <h1 className='text-center mt-7 text-2xl font-semibold'>
+          <h1 className='text-2xl font-semibold text-center mt-7'>
             Your Listings
           </h1>
           {userListings.map((listing) => (
             <div
               key={listing._id}
-              className='border rounded-lg p-3 flex justify-between items-center gap-4'
+              className='flex items-center justify-between gap-4 p-3 border rounded-lg'
             >
               <Link to={`/listing/${listing._id}`}>
                 <img
                   src={listing.imageUrls[0]}
                   alt='listing cover'
-                  className='h-16 w-16 object-contain'
+                  className='object-contain w-16 h-16'
                 />
               </Link>
               <Link
-                className='text-slate-700 font-semibold  hover:underline truncate flex-1'
+                className='flex-1 font-semibold truncate text-slate-700 hover:underline'
                 to={`/listing/${listing._id}`}
               >
                 <p>{listing.name}</p>
